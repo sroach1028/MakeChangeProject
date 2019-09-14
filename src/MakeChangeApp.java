@@ -5,7 +5,6 @@ public class MakeChangeApp {
 	public static void main(String[] args) {
 		Scanner kb = new Scanner(System.in);
 		
-		int twenties = 0, tens = 0, fives = 0, ones = 0, pennies = 0, nickles = 0, dimes = 0, quarters = 0;
 		double totalCost, amountTendered;
 		
 		System.out.print("Total Cost: ");
@@ -18,43 +17,16 @@ public class MakeChangeApp {
 		double centsBack = Math.round((amountOwed - dollarsBack)*100);
 		
 //		System.out.println(amountOwed);
-		System.out.println(dollarsBack);
-		System.out.println(centsBack);
+//		System.out.println(dollarsBack);
+//		System.out.println(centsBack);
 		
 		if (dollarsBack >0) {
-			//call getDollars method
+			getDollarsOwed(dollarsBack);
 		}
 		
 		if (centsBack >0 ) {
 			//call getCents method
 		}
-		
-		
-		do {
-			if (dollarsBack%5 !=0) {
-				ones++;
-				dollarsBack--;
-			continue;
-			}
-
-			if (dollarsBack%10 != 0) {
-				fives++;
-				dollarsBack -=5;
-				continue;
-			}
-
-			else if (dollarsBack % 20 != 0) {
-				tens++;
-				dollarsBack -= 10;
-				continue;
-			}
-			else if (dollarsBack % 20 ==0) {
-				twenties++;
-				dollarsBack-=20;
-				continue;
-			}
-			
-		} while (dollarsBack>0);
 		
 		
 //		do {
@@ -75,9 +47,6 @@ public class MakeChangeApp {
 		
 		
 		
-		System.out.println("Return " + twenties + " twenties, "+
-						   tens + " tens, "+ fives + " fives, "+
-						   ones + " ones");
 		
 
 		
@@ -86,6 +55,37 @@ public class MakeChangeApp {
 		
 		
 		
+	public static void getDollarsOwed(double dollars) {
+		int twenties = 0, tens = 0, fives = 0, ones = 0, pennies = 0, nickles = 0, dimes = 0, quarters = 0;
+		do {
+			if (dollars%5 !=0) {
+				ones++;
+				dollars--;
+				continue;
+			}
+			
+			if (dollars%10 != 0) {
+				fives++;
+				dollars -=5;
+				continue;
+			}
+			
+			else if (dollars % 20 != 0) {
+				tens++;
+				dollars -= 10;
+				continue;
+			}
+			else if (dollars % 20 ==0) {
+				twenties++;
+				dollars-=20;
+				continue;
+			}
+			
+		} while (dollars>0);
+		System.out.println("Return " + twenties + " twenties, "+
+				tens + " tens, "+ fives + " fives, "+
+				ones + " ones");
+	}
 	
 	}
 
