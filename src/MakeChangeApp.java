@@ -28,7 +28,9 @@ public class MakeChangeApp {
 		kb.close();
 	}
 		
-//////******************************METHODS******************************************/////
+
+	
+	//////******************************METHODS******************************************/////
 	
 	public static void getDollarsOwed(double dollars) {
 		int twenties = 0, tens = 0, fives = 0, ones = 0; 
