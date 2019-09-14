@@ -16,47 +16,22 @@ public class MakeChangeApp {
 		int dollarsBack = (int) Math.floor(amountOwed);
 		double centsBack = Math.round((amountOwed - dollarsBack)*100);
 		
-//		System.out.println(amountOwed);
-//		System.out.println(dollarsBack);
-//		System.out.println(centsBack);
 		
 		if (dollarsBack >0) {
 			getDollarsOwed(dollarsBack);
 		}
 		
 		if (centsBack >0 ) {
-			//call getCents method
+			getCentsOwed(centsBack);
 		}
-		
-		
-//		do {
-//			while (centsBack%5 != 0) {
-//				pennies++;
-//				centsBack--;
-//			}
-//			if (centsBack % 10 != 0) {
-//				nickles ++;
-//				centsBack-=5;
-//			}
-//			if(centsBack % 25 !=0) {
-//				dimes++;
-//			}
-//			
-//		}while (centsBack > 0 && centsBack % 25 != 0 ); 
-		
-		
-		
-		
-		
 
-		
 		kb.close();
 	}
 		
-		
-		
+//////******************************METHODS******************************************/////
+	
 	public static void getDollarsOwed(double dollars) {
-		int twenties = 0, tens = 0, fives = 0, ones = 0, pennies = 0, nickles = 0, dimes = 0, quarters = 0;
+		int twenties = 0, tens = 0, fives = 0, ones = 0; 
 		do {
 			if (dollars%5 !=0) {
 				ones++;
@@ -87,7 +62,38 @@ public class MakeChangeApp {
 				ones + " ones");
 	}
 	
+	public static void getCentsOwed(double cents) {
+		int pennies = 0, nickles = 0, dimes = 0, quarters = 0;
+		do {
+			if (cents % 5 !=0) {
+				pennies ++;
+				cents--;
+				continue;
+			}
+			else if(cents >= 25) {
+				quarters++;
+				cents-= 25;
+				continue;
+			}
+			else if (cents % 10 == 0) {
+				dimes++;
+				cents -=10;
+				continue;
+			}
+			else if (cents % 5 == 0){
+				nickles++;
+				cents -=5;
+				continue;
+			}
+			
+		} while (cents >0);
+		System.out.println("Return " + quarters + " quarters, "+
+				dimes + " dimes, "+ nickles + " nickles, "+
+				pennies + " pennies");
+		
 	}
+	
+}
 
 
 
