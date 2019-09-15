@@ -55,7 +55,7 @@ public class MakeChangeApp {
 		int dollarsBack = (int) Math.floor(amountOwed);
 		int centsBack = (int) Math.round((amountOwed - dollarsBack)*100);
 		
-		System.out.println("Your change is: ");
+		System.out.println("\nYour change is: \n");
 		
 		if (dollarsBack >0) {
 			getDollarsOwed(dollarsBack);
