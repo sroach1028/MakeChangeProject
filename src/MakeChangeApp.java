@@ -39,15 +39,12 @@ public class MakeChangeApp {
 	//*************************************************************************************************************//
 	
 	public static void exactMessage() {      //prints message if amount tendered exactly matches total cost
-		System.out.println("Wow, that's the exact amount owed. You should know, starting today, I also accept tips, although it's against company policy. "
-				+ "			\n...But I already gave my two weeks so it's fine. My boss has been riding me and I just can't take the politics. "
-				+ "			\nCan you believe I had to come in on Christmas? Then in April they cut my hours to part-time and stopped offering stock options. So yeah, tips are great. "
-				+ "			\n...What? Oh, yes, you are free to go. Take me with you?");
+		System.out.println("Exact amount, no change due");
 	} // end exactMessage
 	//*************************************************************************************************************//
 	
 	public static void errorMessage(Scanner kb) { 				// prints error message if amount tendered is less than the total cost
-		System.out.println("That's not enough. Come back when you have more money. ");
+		System.out.println("That's not enough. Ask for more. ");
 	} // end errorMessage
 	//*************************************************************************************************************//
 	
@@ -55,7 +52,8 @@ public class MakeChangeApp {
 		int dollarsBack = (int) Math.floor(amountOwed);
 		int centsBack = (int) Math.round((amountOwed - dollarsBack)*100);
 		
-		System.out.println("\nYour change is: \n");
+		System.out.println("\nChange due to customer: "
+				+ "			\n-----------------------");
 		
 		if (dollarsBack >0) {
 			getDollarsOwed(dollarsBack);
