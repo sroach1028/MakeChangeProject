@@ -11,12 +11,15 @@ public class MakeChangeApp {
 		totalCost = kb.nextDouble();
 		System.out.println("Amount tendered: ");
 		amountTendered = kb.nextDouble();
-		
 		double amountOwed = amountTendered - totalCost;
+		if (amountTendered < amountOwed) {
+			amountTendered = errorMessage(kb);
+		}
+		
 		int dollarsBack = (int) Math.floor(amountOwed);
 		double centsBack = Math.round((amountOwed - dollarsBack)*100);
 		
-		
+		System.out.println("Your change is: ");
 		if (dollarsBack >0) {
 			getDollarsOwed(dollarsBack);
 		}
@@ -47,53 +50,73 @@ public class MakeChangeApp {
 				continue;
 			}
 			
-			else if (dollars % 20 != 0) {
+			if (dollars % 20 != 0) {
 				tens++;
 				dollars -= 10;
 				continue;
 			}
-			else if (dollars % 20 ==0) {
+			if (dollars % 20 ==0) {
 				twenties++;
 				dollars-=20;
 				continue;
 			}
 			
 		} while (dollars>0);
-		System.out.println("Return " + twenties + " twenties, "+
-				tens + " tens, "+ fives + " fives, "+
-				ones + " ones");
+		printMethod(twenties, "Twenty", "Twenties");
+		printMethod(tens, "Ten", "Tens");
+		printMethod(fives, "Five", "Fives");
+		printMethod(ones, "One", "Ones");
 	}
 	
 	public static void getCentsOwed(double cents) {
 		int pennies = 0, nickles = 0, dimes = 0, quarters = 0;
+		
 		do {
 			if (cents % 5 !=0) {
 				pennies ++;
 				cents--;
 				continue;
 			}
-			else if(cents >= 25) {
+			
+			if(cents >= 25) {
 				quarters++;
 				cents-= 25;
 				continue;
 			}
-			else if (cents % 10 == 0) {
+			
+			if (cents % 10 == 0) {
 				dimes++;
 				cents -=10;
 				continue;
 			}
-			else if (cents % 5 == 0){
+			if (cents % 5 == 0){
 				nickles++;
 				cents -=5;
 				continue;
 			}
 			
 		} while (cents >0);
-		System.out.println("Return " + quarters + " quarters, "+
-				dimes + " dimes, "+ nickles + " nickles, "+
-				pennies + " pennies");
+		printMethod(quarters, "Quarter", "Quarters");
+		printMethod(dimes, "Dime", "Dimes");
+		printMethod(nickles, "Nickle", "Nickles");
+		printMethod(pennies, "Penny", "Pennies");
 		
 	}
+	public static void printMethod(int amountOfEach, String single, String multiple) {
+		switch(amountOfEach) {
+		case 0:
+			break;
+		case 1: System.out.println(amountOfEach + " " + single);
+			break;
+		default: System.out.println(amountOfEach + " " + multiple);
+		}
+	}
+	public static double errorMessage(Scanner kb) {
+		System.out.println("That's not enough money. Give me more. ");
+		System.out.println("Amount tendered: ");
+		return kb.nextDouble();
+	}
+	
 	
 }
 
