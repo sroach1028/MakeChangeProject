@@ -10,7 +10,7 @@ public class MakeChangeApp {
 		double amountOwed = amountTendered - totalCost;
 		
 		if (amountTendered == totalCost) {
-			exactMessaage();
+			exactMessage();
 		}
 		else if (amountTendered < totalCost) {
 			errorMessage(kb);
@@ -38,7 +38,7 @@ public class MakeChangeApp {
 	} // end getAmountTendered
 	//*************************************************************************************************************//
 	
-	public static void exactMessaage() {      //prints message if amount tendered exactly matches total cost
+	public static void exactMessage() {      //prints message if amount tendered exactly matches total cost
 		System.out.println("Wow, that's the exact amount owed. You should know, starting today, I also accept tips, although it's against company policy. "
 				+ "			\n...But I already gave my two weeks so it's fine. My boss has been riding me and I just can't take the politics. "
 				+ "			\nCan you believe I had to come in on Christmas? Then in April they cut my hours to part-time and stopped offering stock options. So yeah, tips are great. "
